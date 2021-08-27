@@ -3,36 +3,37 @@ package com.example.weather_app_compose
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
-import androidx.compose.material.MaterialTheme
-import androidx.compose.material.Surface
+import androidx.compose.foundation.Image
+import androidx.compose.foundation.layout.Column
+import androidx.compose.material.Button
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.ui.Alignment
+import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
-import com.example.weather_app_compose.ui.theme.Weather_App_ComposeTheme
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {
-            Weather_App_ComposeTheme {
-                // A surface container using the 'background' color from the theme
-                Surface(color = MaterialTheme.colors.background) {
-                    Greeting("Android")
-                }
-            }
+            MyView()
         }
     }
 }
 
 @Composable
-fun Greeting(name: String) {
-    Text(text = "Hello $name!")
+fun MyView() {
+    Column(horizontalAlignment = Alignment.CenterHorizontally) {
+        Text(text = "Kekod'a Saygı Ve Selamlarımla")
+        Image(painter = painterResource(id = R.drawable.cloudy), contentDescription = "cloudy")
+        Button(onClick = { }) {
+            Text(text = "Devam Et")
+        }
+    }
 }
 
-@Preview(showBackground = true)
+@Preview(showBackground = true, showSystemUi = true, backgroundColor = 0xFF03DAC5)
 @Composable
 fun DefaultPreview() {
-    Weather_App_ComposeTheme {
-        Greeting("Murat")
-    }
+    MyView()
 }
